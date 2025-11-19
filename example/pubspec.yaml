@@ -1,0 +1,15 @@
+name: example
+description: Example for flutter_auto_translate
+publish_to: 'none'
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_auto_translate:
+    path: ../
+
+flutter:
+  uses-material-design: true
