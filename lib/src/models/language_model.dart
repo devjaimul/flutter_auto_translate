@@ -13,9 +13,9 @@ class LanguageModel {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is LanguageModel &&
-              runtimeType == other.runtimeType &&
-              code == other.code;
+      other is LanguageModel &&
+          runtimeType == other.runtimeType &&
+          code == other.code;
 
   @override
   int get hashCode => code.hashCode;

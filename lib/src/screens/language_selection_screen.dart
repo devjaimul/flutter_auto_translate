@@ -14,7 +14,8 @@ class LanguageSelectionScreen extends StatefulWidget {
   });
 
   @override
-  State<LanguageSelectionScreen> createState() => _LanguageSelectionScreenState();
+  State<LanguageSelectionScreen> createState() =>
+      _LanguageSelectionScreenState();
 }
 
 class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
@@ -82,7 +83,7 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
         children: [
           Container(
             padding: const EdgeInsets.all(16),
-            color: primaryColor.withOpacity(0.1),
+            color: primaryColor.withValues(alpha: 0.1),
             child: TextField(
               controller: searchController,
               onChanged: _filterLanguages,
@@ -91,12 +92,12 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
                 prefixIcon: const Icon(Icons.search),
                 suffixIcon: searchController.text.isNotEmpty
                     ? IconButton(
-                  icon: const Icon(Icons.clear),
-                  onPressed: () {
-                    searchController.clear();
-                    _filterLanguages('');
-                  },
-                )
+                        icon: const Icon(Icons.clear),
+                        onPressed: () {
+                          searchController.clear();
+                          _filterLanguages('');
+                        },
+                      )
                     : null,
                 filled: true,
                 fillColor: Colors.white,
@@ -136,7 +137,7 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
                       height: 48,
                       decoration: BoxDecoration(
                         color: isSelected
-                            ? primaryColor.withOpacity(0.1)
+                            ? primaryColor.withValues(alpha: 0.1)
                             : Colors.grey.shade100,
                         borderRadius: BorderRadius.circular(8),
                       ),
@@ -151,7 +152,8 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
                       language.name,
                       style: TextStyle(
                         fontSize: 16,
-                        fontWeight: isSelected ? FontWeight.bold : FontWeight.w500,
+                        fontWeight:
+                            isSelected ? FontWeight.bold : FontWeight.w500,
                         color: isSelected ? primaryColor : Colors.black,
                       ),
                     ),

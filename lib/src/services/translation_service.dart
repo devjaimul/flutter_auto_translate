@@ -49,7 +49,8 @@ class TranslationService {
     return null;
   }
 
-  Future<void> _saveToCache(String text, String targetLang, String translation) async {
+  Future<void> _saveToCache(
+      String text, String targetLang, String translation) async {
     final key = _getCacheKey(text, targetLang);
     final data = {
       'original': text,
@@ -73,7 +74,8 @@ class TranslationService {
     if (cached != null) return cached;
 
     try {
-      final translation = await _translator.translate(text, from: 'auto', to: lang);
+      final translation =
+          await _translator.translate(text, from: 'auto', to: lang);
       final translatedText = translation.text;
       await _saveToCache(text, lang, translatedText);
       return translatedText;

@@ -131,10 +131,10 @@ class _AutoTranslateState extends State<AutoTranslate> {
 
     if (_isLoading) {
       return widget.loadingWidget ??
-          SizedBox(
+          const SizedBox(
             height: 20,
             width: 20,
-            child: const Center(
+            child: Center(
               child: SizedBox(
                 width: 12,
                 height: 12,
