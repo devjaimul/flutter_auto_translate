@@ -1,7 +1,8 @@
 name: flutter_auto_translate
 description: Wrap any Text widget with AutoTranslate to add automatic translation with caching. Supports 85+ languages.
-version: 1.0.0
-homepage: https://github.com/devjaimul/flutter_auto_translate
+version: 1.0.1
+author: Jaimul Islam Akik
+repository: https://github.com/devjaimul/flutter_auto_translate
 
 environment:
   sdk: '>=3.0.0 <4.0.0'

@@ -1,4 +1,3 @@
-cat > README.md << 'EOF'
 # Flutter Auto Translate
 
 🎯 **Wrap any Text widget to add automatic translation with smart caching!**
