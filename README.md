@@ -16,7 +16,7 @@
 ## Installation
 ```yaml
 dependencies:
-  flutter_auto_translate: ^1.0.2
+  flutter_auto_translate: ^1.0.3
 ```
 
 ## Quick Start
