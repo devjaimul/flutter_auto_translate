@@ -16,7 +16,7 @@
 ## Installation
 ```yaml
 dependencies:
-  flutter_auto_translate: ^1.0.3
+  flutter_auto_translate: ^1.0.4
 ```
 
 ## Quick Start
@@ -151,6 +151,13 @@ await TranslationService().clearCacheForLanguage('es');
 ## Example App
 
 Check out the [example](example/) directory for a complete working app.
+
+## 📚 Complete Documentation
+
+Read the full detailed guide here:
+
+🔗 Medium Article:
+https://medium.com/@jaimulislam7/flutter-auto-translate-making-your-app-multilingual-in-minutes-eb1193d8b2c6
 
 ## License
 
