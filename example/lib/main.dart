@@ -7,14 +7,9 @@ void main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -33,91 +28,126 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final TextEditingController _searchController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    _emailController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        // No need to call setState anywhere - AutoTranslate listens to the
+        // service and updates automatically when the language changes.
         title: const AutoTranslate(
-          child: Text('My App'),
+          child: Text('Auto Translate Demo'),
         ),
         actions: [
           IconButton(
             icon: const Icon(Icons.language),
-            onPressed: () async {
-              await Navigator.push(
+            onPressed: () {
+              Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const LanguageSelectionScreen(),
+                  builder: (_) => const LanguageSelectionScreen(),
                 ),
               );
-              setState(() {}); // Rebuild to show translations
             },
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Example 1: Wrap your existing Text widget
-            const AutoTranslate(
-              child: Text(
-                'Welcome to Flutter!',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+      // AutoTranslateScope shows a single full-screen loader while the
+      // first batch of translations for this screen is being fetched, and
+      // again briefly when the user changes the language.
+      body: AutoTranslateScope(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const AutoTranslate(
+                child: Text(
+                  'Welcome to Flutter!',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
               ),
-            ),
-
-            const SizedBox(height: 20),
-
-            // Example 2: Your custom text widget wrapped
-            const AutoTranslate(
-              child: Text(
-                'This is a subtitle text that will be translated automatically.',
-                style: TextStyle(fontSize: 16),
+              const SizedBox(height: 12),
+              const AutoTranslate(
+                child: Text(
+                  'This subtitle will be translated automatically.',
+                  style: TextStyle(fontSize: 16),
+                ),
               ),
-            ),
+              const SizedBox(height: 24),
 
-            const SizedBox(height: 20),
-
-            // Example 3: Disable translation for specific text
-            const AutoTranslate(
-              enable: false,
-              child: Text(
-                'API_KEY_12345', // Won't be translated
-                style: TextStyle(fontFamily: 'monospace'),
-              ),
-            ),
-
-            const SizedBox(height: 40),
-
-            // Your existing custom widgets work too!
-            const CustomTextOne(text: 'Hello from custom widget'),
-
-            const SizedBox(height: 20),
-
-            ElevatedButton(
-              onPressed: () async {
-                await Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const LanguageSelectionScreen(),
+              // 1. Translating a hint on a regular TextField — wrap with
+              //    AutoTranslate.
+              AutoTranslate(
+                child: TextField(
+                  controller: _searchController,
+                  decoration: const InputDecoration(
+                    hintText: 'Search products',
+                    labelText: 'Search',
+                    helperText: 'Type to filter the catalogue',
+                    border: OutlineInputBorder(),
                   ),
-                );
-                setState(() {});
-              },
-              child: const AutoTranslate(
-                child: Text('Change Language'),
+                ),
               ),
-            ),
-          ],
+              const SizedBox(height: 16),
+
+              // 2. Or use the dedicated AutoTranslateField. Best choice
+              //    when you need the explicit TextField API surface.
+              AutoTranslateField(
+                controller: _emailController,
+                decoration: const InputDecoration(
+                  hintText: 'you@example.com',
+                  labelText: 'Email address',
+                  helperText: 'We will never share your email',
+                  prefixIcon: Icon(Icons.email_outlined),
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 24),
+
+              // 3. Disable translation for specific text.
+              const AutoTranslate(
+                enable: false,
+                child: Text(
+                  'API_KEY_12345',
+                  style: TextStyle(fontFamily: 'monospace'),
+                ),
+              ),
+              const SizedBox(height: 24),
+
+              const CustomTextOne(text: 'Hello from a custom widget'),
+              const SizedBox(height: 24),
+
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const LanguageSelectionScreen(),
+                    ),
+                  );
+                },
+                child: const AutoTranslate(
+                  child: Text('Change language'),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 }
 
-// Your existing custom text widget - just wrap with AutoTranslate!
 class CustomTextOne extends StatelessWidget {
   final String text;
 
