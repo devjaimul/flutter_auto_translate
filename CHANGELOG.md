@@ -1,3 +1,11 @@
+## [1.1.1] - 2026-05-13
+
+### Fixed
+- README banner image now uses a path relative to the package root
+  (`assets/flutter_auto_translate_banner.png`) so it renders correctly on
+  **pub.dev** and **GitHub** (the previous `raw.githubusercontent.com/.../main/...`
+  URL returned 404 when the default branch is `master`).
+
 ## [1.1.0] - 2026-05-13
 
 ### Added

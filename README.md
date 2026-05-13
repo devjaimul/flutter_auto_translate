@@ -1,8 +1,8 @@
 # Flutter Auto Translate
 
-![Flutter Auto Translate banner](https://raw.githubusercontent.com/devjaimul/flutter_auto_translate/main/assets/flutter_auto_translate_banner.png)
+![Flutter Auto Translate banner](assets/flutter_auto_translate_banner.png)
 
-**Wrap any Text or TextField to add automatic localization to your Flutter app — zero effort, smart caching, 85+ languages.**
+The image path is **relative to the package root** so it works on GitHub and on pub.dev (both load the file from your published package). to add automatic localization to your Flutter app — zero effort, smart caching, 85+ languages.**
 
 [![pub package](https://img.shields.io/pub/v/flutter_auto_translate.svg)](https://pub.dev/packages/flutter_auto_translate)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -21,7 +21,7 @@
 ## Installation
 ```yaml
 dependencies:
-  flutter_auto_translate: ^1.1.0
+  flutter_auto_translate: ^1.1.1
 ```
 
 ## Quick start
